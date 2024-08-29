@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>EShop API</title>
+</head>
+<body>
+    <h2>Home page</h2>
+    <table>
+        <thead>
+            <tr class="table-header">
+                <th>HTTP METHODS</th>
+                <th>Path</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET</td>
+                <td>/ (Home page)</td>
+                <td>Retrieves the home page of the website</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Users</h2>
+    <table>
+        <thead>
+            <tr class="table-header">
+                <th>HTTP METHODS</th>
+                <th>Path</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET</td>
+                <td>/users</td>
+                <td>Retrieves the home page of the website</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/users/:id</td>
+                <td>This endpoint retrieves one user, specified by it's id</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/users/register</td>
+                <td>This endpoint registers a new user, hash's their password and adds them to the db.</td>
+            </tr>
+            <tr>
+                <td>PATCH/PUT</td>
+                <td>/users/:id</td>
+                <td>This endpoint updates one user, specified by it's id</td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>/users/:id</td>
+                <td>This endpoint deletes one user, specified by it's id</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Product/Item</h2>
+    <table>
+        <thead>
+            <tr class="table-header">
+                <th>HTTP METHODS</th>
+                <th>Path</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET</td>
+                <td>/products</td>
+                <td>This endpoint retrieves all products</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/products/:id</td>
+                <td>This endpoint retrieves one product, specified by it's id</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>products/add</td>
+                <td>This endpoint add a product to the db.</td>
+            </tr>
+            <tr>
+                <td>PUT/PATCH</td>
+                <td>products/:id</td>
+                <td>This endpoint updates one product, specified by it's id</td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>products/:id</td>
+                <td>This endpoint deletes one product, specified by it's id</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
