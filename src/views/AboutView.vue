@@ -2,8 +2,8 @@
     <div>
         <section class="hero">
           <div class="text-content">
-            <h1>Buffer Free Car is our Pride</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <h1>About Our Amazing Cars</h1>
+            <p>we have the top cars in the market.</p>
             <a href="#">Explore Services →</a>
           </div>
           <div class="carousel">
@@ -15,24 +15,24 @@
           <h2>Services</h2>
           <div class="service-cards">
             <div class="card">
-              <h3>Car Wash</h3>
-              <p>Lorem Ipsum is simply dummy text of the printing industry.</p>
+              <h3>Booking </h3>
+              <p>You are able to book a car for a few hour.</p>
             </div>
             <div class="card">
-              <h3>Chemical Wash</h3>
-              <p>Lorem Ipsum is simply dummy text of the printing industry.</p>
+              <h3>Cars</h3>
+              <p>We have the lates cars available for booking</p>
             </div>
             <div class="card">
-              <h3>Steam Wash</h3>
-              <p>Lorem Ipsum is simply dummy text of the printing industry.</p>
+              <h3>Vintage</h3>
+              <p>A selection of vintage cars .</p>
             </div>
           </div>
         </section>
 
+        
         <section class="process" id="process">
-          <!-- Process section content can go here -->
-           <h2 style="color: blue;">Hey there</h2>
-        </section>
+ 
+</section>
 
         <section class="cont" contwrap>
           <div class="text-section">
@@ -195,7 +195,7 @@ body, html {
 }
 
 .process {
-  background-image: url('');
+  background-image: url('https://kiara-adams.github.io/images/To the love of all things Porsche.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

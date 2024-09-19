@@ -27,7 +27,7 @@ export default createStore({
       state.user = value
     },
     setProducts(state, value) {
-      state.products = value
+      state.cars = value
     },
     setRecentProducts(state, value) {
       state.recentProducts = value

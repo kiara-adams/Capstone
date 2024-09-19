@@ -1,8 +1,8 @@
 <template>
-  <div class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
+  <div class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top" ref="navbar">
     <div class="container-fluid">
       <router-link to="/" class="navbar-brand logo">
-        <img src=" https://kiara-adams.github.io/images/LUXE-removebg-preview.png" alt="Logo" width="90" /> <!-- Replace with your logo -->
+        <img src="https://kiara-adams.github.io/images/LUXE-removebg-preview.png" alt="Logo" width="90" /> <!-- Replace with your logo -->
       </router-link>
       <button
         class="navbar-toggler"
@@ -27,7 +27,10 @@
             <router-link to="/Cars" class="nav-link">Shop Cars</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/premium" class="nav-link">Premium Area</router-link>
+            <router-link to="/bookings" class="nav-link">Bookings</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/contact" class="nav-link">contact</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/admin" class="nav-link">Admin</router-link>
@@ -51,6 +54,22 @@
 <script>
 export default {
   name: "NavBar",
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      const navbar = this.$refs.navbar;
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-black');
+      } else {
+        navbar.classList.remove('bg-black');
+      }
+    }
+  }
 };
 </script>
 
@@ -61,7 +80,7 @@ export default {
   border-top: 2px solid white;
   border-bottom: 2px solid white;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .navbar::before,
@@ -124,5 +143,9 @@ export default {
 .search .btn-outline-light:hover {
   color: #ff0000;
   border-color: #ff0000;
+}
+
+.bg-black {
+  background-color: black !important;
 }
 </style>

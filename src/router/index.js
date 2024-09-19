@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue'
 import SignUp from '@/views/SignUp.vue'
 import AdminView from '@/views/AdminView.vue'
+import ContactView from '@/views/ContactView.vue'
 
 
 const routes = [
@@ -39,6 +40,11 @@ const routes = [
     path : '/admin',
     name : 'admin',
     component : AdminView
+  },
+  {
+    path : '/contact',
+    name : 'contact',
+    component : ContactView
   }
 
   // {

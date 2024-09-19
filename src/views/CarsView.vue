@@ -20,62 +20,79 @@
         <button>Sportscar</button>
         <button class="sort">Sort by Price</button>
       </div>
-  
-      <div class="car-grid">
-        <!-- Car 1 -->
-        <div class="car-card">
-          <img src="" alt="Lexus RX 350" />
-          <h3>Lexus RX 350</h3>
-          <p>$300 / Per Day</p>
-          <button class="drive-now">Drive Now</button>
-        </div>
-        <!-- Car 2 -->
-        <div class="car-card">
-          <img src="" alt="Mercedes-Benz GLC" />
-          <h3>Mercedes-Benz GLC</h3>
-          <p>$200 / Per Day</p>
-          <button class="drive-now">Drive Now</button>
-        </div>
-        <!-- Car 3 -->
-        <div class="car-card">
-          <img src="" alt="Toyota Highlander" />
-          <h3>Toyota Highlander</h3>
-          <p>$300 / Per Day</p>
-          <button class="drive-now">Drive Now</button>
-        </div>
-        <!-- Car 4 -->
-        <div class="car-card">
-          <img src="" alt="Rolls-Royce Dawn" />
-          <h3>Rolls-Royce Dawn 2018</h3>
-          <p>$1300 / Per Day</p>
-          <button class="drive-now">Drive Now</button>
-        </div>
-        <!-- Car 5 -->
-        <div class="car-card">
-          <img src="" alt="Mercedes S Class" />
-          <h3>Mercedes S Class</h3>
-          <p>$400 / Per Day</p>
-          <button class="drive-now">Drive Now</button>
-        </div>
-        <!-- Car 6 - Limited Edition -->
-        <div class="car-card">
-          <div class="limited-edition">Limited Edition</div>
-          <img src="" alt="Lamborghini Aventador" />
-          <h3>Lamborghini Aventador</h3>
-          <p>$400 / Per Day</p>
-          <button class="drive-now">Drive Now</button>
-        </div>
+      <div class="carwrapper" carwrapper>
+        <CardComp card v-for="(car, index) in cars" :key="index">
+          <template #cardBody >
+            <img class="img-fluid" :src="car.carURL" :alt="car.carName"  loading="lazy"  />
+            <h3>{{ car.carName }}</h3>
+            <p>R{{ car.amount }} / Per Day</p>
+            <button class="drive-now">Drive Now</button>
+          </template>
+        </CardComp>
       </div>
     </section>
   </template>
   
-  <script>
-  export default {
-    name: "FleetSection",
-  };
+  <script setup>
+  import CardComp from '@/components/CardComp.vue';
+  import store from '@/store';
+  import { computed, onMounted } from 'vue';
+
+  const cars = computed(
+    () => store.state.cars
+  )
+
+  
+  
+  onMounted(()=>{ store.dispatch('fetchProducts')})
+
+
+
   </script>
   
   <style scoped>
+
+      [card]{
+        min-width: 300px;
+      }
+
+     .car-card img {
+        width: 100%; /* Image takes the full width of its container */
+        height: 350px; /* Set a fixed height for consistency */
+        object-fit: cover; /* Ensures the image is cropped while maintaining its aspect ratio */
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+
+     .carwrapper {
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; 
+        width: 75% !important;
+        margin: 0 auto;
+      }
+
+      @media (max-width: 1024px) {
+  .carwrapper > * {
+    flex-basis: calc(50% - 20px); /* 2 items per row on medium screens */
+  }
+}
+
+@media (max-width: 800px) {
+
+  .carwrapper{
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 1 item per row on smaller screens */
+  }
+}
+
+.carwrapper > * {
+  flex-basis: calc(33.33% - 20px); /* Ensures 3 items per row with spacing */
+  margin-bottom: 20px; /* Spacing between rows */
+}
     * {
             margin: 0;
             padding: 0;
@@ -83,6 +100,8 @@
             background-color: #000;
 
         }
+
+
 
         body {
             font-family: 'Arial', sans-serif;
@@ -120,8 +139,8 @@
             padding: 15px 50px;
             font-size: 1rem;
             background-color: transparent;
-            border: 2px solid #ffbf00;
-            color: #ffbf00;
+            border: 2px solid #ff0000;
+            color: #ff0000;
             text-transform: uppercase;
             cursor: pointer;
             letter-spacing: 2px;
@@ -129,7 +148,7 @@
         }
 
         .view-all-btn:hover {
-            background-color: #ffbf00;
+            background-color: #ff0000;
             color: #000;
         }
 
@@ -152,26 +171,11 @@
 
         .filters button:hover,
         .filters .sort:hover {
-            color: #ffbf00;
+            color: #ff0000;
         }
 
         .filters .sort {
-            color: #ffbf00;
-        }
-
-        .car-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .car-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 10px;
+            color: #ff0000;
         }
 
         .car-card h3 {
@@ -182,13 +186,13 @@
 
         .car-card p {
             font-size: 1.2rem;
-            color: #ffbf00;
+            color: #ff0000;
             margin-top: 5px;
         }
 
         .drive-now {
             background-color: transparent;
-            color: #ffbf00;
+            color: #ff0000;
             font-size: 1rem;
             text-transform: uppercase;
             cursor: pointer;
@@ -206,6 +210,18 @@
 
         .drive-now:hover::after {
             margin-left: 20px;
+        }
+
+        .limited-edition {
+            background-color: red;
+            color: white;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            text-transform: uppercase;
+            border-radius: 5px;
         }
 
         .limited-edition {
